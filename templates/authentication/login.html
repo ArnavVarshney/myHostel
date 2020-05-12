@@ -1,0 +1,46 @@
+{% extends 'authentication/base_layout.html' %}
+
+{% load bootstrap4 %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-8 mx-auto">
+                <div class="jumbotron">
+                    <div class="row">
+                        <div class="text-center col-12">
+                            <h2>Login</h2>
+                        </div>
+                        <div class="col-12">
+                            <form id="loginForm" class="text" action="{% url 'login' %}" method="post">
+                                {% csrf_token %}
+                                {% bootstrap_form form %}
+                                {% if request.GET.next %}
+                                    <input type="hidden" name="next" value="{{ request.GET.next }}">
+                                {% endif %}
+                                {% if status %}
+                                    <div class="form-group text-left">
+                                        {% if status == 2 %}
+                                            <label class="text-danger">{{ msg }}</label>
+                                        {% elif status == 1 %}
+                                            <label class="text-success">{{ msg }}</label>
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
+                                <div class="form-group text-left">
+                                    <a href="{% url 'forgot_password' %}"><label for=forgotPassword">Forgot
+                                        Password?</label></a>
+                                </div>
+                                <div class="text-center col-12">
+                                    {% buttons %}
+                                        <button type="submit" class="btn btn-primary">Login</button>
+                                    {% endbuttons %}
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
