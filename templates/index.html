@@ -15,7 +15,6 @@
             background-size: cover;
             height: 500px;
             color: white;
-            font-weight: bold;
         }
     </style>
 </head>
@@ -37,7 +36,10 @@
         <div class="container"><br><br><br><br><br>
             <div class="row">
                 <div class="col-12">
-                    <p class="text-center" style="font-size: 50pt">myHostel</p>
+                    <p class="text-center" style="font-size: 50pt; font-weight: bold;">myHostel</p>
+                    {% if logout == 1 %}
+                        <p class="text-center" style="font-size: 30pt">Logged out!</p>
+                    {% endif %}
                 </div>
             </div>
         </div>

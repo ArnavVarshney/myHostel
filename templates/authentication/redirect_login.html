@@ -1,0 +1,10 @@
+{% extends 'authentication/base_layout.html' %}
+
+{% block content %}
+
+    <meta http-equiv="refresh"
+          content="0; url = {% url 'dashboard' %}"/>
+
+    <h3>Redirecting to dashboard. Click here to <a href="/dashboard">force redirect</a>.</h3>
+
+{% endblock %}

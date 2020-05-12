@@ -23,7 +23,11 @@ def login(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
-            return redirect('dashboard')
+            email = form.cleaned_data.get('email')
+            uid = UserProfile.objects.get(email=email).uid
+            response = render(request, 'authentication/redirect_login.html')
+            response.set_cookie('user', uid)
+            return response
         return render(request, 'authentication/login.html', {'form': form})
     else:
         return render(request, 'authentication/login.html', {'form': LoginForm()})
@@ -78,4 +82,10 @@ def reset_password(request):
 
 
 def logout(request):
-    return None
+    response = render(request, 'index.html', {'logout': 1})
+    response.delete_cookie('user')
+    return response
+
+
+def redirect_login(request):
+    return render(request, 'authentication/redirect_login.html')
