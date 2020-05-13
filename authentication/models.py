@@ -16,13 +16,13 @@ def hash_password(password):
 
 class UserProfile(models.Model):
     uid = models.UUIDField(primary_key=True, default=uuid.uuid4)
-    firstName = models.CharField(max_length=50, blank=True)
-    lastName = models.CharField(max_length=50, blank=True)
+    first_name = models.CharField(max_length=50, blank=True)
+    last_name = models.CharField(max_length=50, blank=True)
     email = models.EmailField(max_length=50, blank=False)
     password = models.CharField(max_length=500, blank=False)
-    myGIISID = models.CharField(max_length=50, blank=True)
+    my_giis_id = models.CharField(max_length=50, blank=True)
     phone = models.CharField(max_length=50, blank=True)
-    profilePicture = models.ImageField(default='defaultProfilePicture.jpg', upload_to='profile_pictures')
+    profile_picture = models.ImageField(default='defaultprofile_picture.jpg', upload_to='profile_pictures', blank=True)
     isEmailVerified = models.BooleanField(default=False)
     timestamp = models.DateTimeField(auto_now_add=True)
     role_choices = (
@@ -33,7 +33,7 @@ class UserProfile(models.Model):
     role = models.PositiveSmallIntegerField(choices=role_choices, null=True)
 
     def __str__(self):
-        return f'{self.firstName} {self.lastName} - {self.email}'
+        return f'{self.first_name} {self.last_name} - {self.email}'
 
     def verify_email(self):
         self.isEmailVerified = True

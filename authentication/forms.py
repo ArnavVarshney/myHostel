@@ -25,7 +25,7 @@ def verify_password(stored_password, provided_password):
 class RegistrationForm(forms.ModelForm):
     class Meta:
         model = UserProfile
-        fields = ['profilePicture', 'firstName', 'lastName', 'email', 'password', 'myGIISID', 'phone', 'role']
+        fields = ['profile_picture', 'first_name', 'last_name', 'email', 'password', 'my_giis_id', 'phone', 'role']
 
     def clean_email(self):
         email = self.cleaned_data.get('email')
@@ -37,12 +37,12 @@ class RegistrationForm(forms.ModelForm):
         password = self.cleaned_data.get('password')
         return hash_password(password)
 
-    profilePicture = forms.ImageField(label='Profile Picture', required=False)
-    firstName = forms.CharField(label='First Name', required=False)
-    lastName = forms.CharField(label='Last Name', required=False)
+    profile_picture = forms.ImageField(label='Profile Picture', required=False)
+    first_name = forms.CharField(label='First Name', required=False)
+    last_name = forms.CharField(label='Last Name', required=False)
     email = forms.CharField(label='Email', required=True)
     password = forms.CharField(label='Password', required=True, widget=forms.PasswordInput)
-    myGIISID = forms.CharField(label='myGIIS ID', required=False)
+    my_giis_id = forms.CharField(label='myGIIS ID', required=False)
     phone = forms.CharField(label='Phone', required=False)
     role = forms.IntegerField(label='Role', required=False,
                               widget=forms.Select(choices=((1, 'Student'), (2, 'Warden'), (3, 'School'))))

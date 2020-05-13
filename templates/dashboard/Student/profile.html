@@ -1,0 +1,40 @@
+{% extends 'dashboard/Student/base_layout.html' %}
+
+{% load bootstrap4 %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-8 mx-auto">
+                <div class="jumbotron">
+                    <div class="row text">
+                        <div class="text-center col-12">
+                            <h2>Profile</h2>
+                        </div>
+                        <div class="col-12">
+                            <form id="registerForm" class="text" action="{% url 'profile' %}" method="post"
+                                  enctype="multipart/form-data">
+                                {% csrf_token %}
+                                {% bootstrap_form form %}
+                                {% if status %}
+                                    <div class="form-group text-left">
+                                        {% if status == 2 %}
+                                            <label class="text-danger">{{ msg }}</label>
+                                        {% elif status == 1 %}
+                                            <label class="text-success">{{ msg }}</label>
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
+                                <div class="text-center col-12">
+                                    {% buttons %}
+                                        <button type="submit" class="btn btn-primary">Save</button>
+                                    {% endbuttons %}
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
