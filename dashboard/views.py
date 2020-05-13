@@ -1,5 +1,9 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 
 def dashboard(request):
-    return render(request, 'dashboard/dashboard_student.html')
+    try:
+        id_token = request.COOKIES['user']
+    except KeyError:
+        return redirect('/authentication/login_session/')
+    return render(request, 'dashboard/Student/dashboard.html')

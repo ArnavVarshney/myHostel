@@ -39,7 +39,7 @@ def forgot_password(request):
         form = ForgotPasswordForm(request.POST)
         if form.is_valid():
             email = form.cleaned_data['email']
-            UserProfile.objects.get(email=email).send_forgot_password_email( request.get_host(), request.scheme)
+            UserProfile.objects.get(email=email).send_forgot_password_email(request.get_host(), request.scheme)
             return render(request, 'authentication/forgot_password.html',
                           {'form': form, 'status': 1, 'msg': 'Mail sent successfully!'})
         return render(request, 'authentication/forgot_password.html', {'form': form})
@@ -90,3 +90,7 @@ def logout(request):
 
 def redirect_login(request):
     return render(request, 'authentication/redirect_login.html')
+
+
+def login_session(request):
+    return render(request, 'authentication/redirect_login_session.html', )

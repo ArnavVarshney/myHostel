@@ -3,11 +3,12 @@
 {% block content %}
 
     <meta http-equiv="refresh"
-          content="0; url = {% url 'dashboard' %}"/>
+          content="0; url = {% url 'login' %}"/>
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-8 mx-auto">
-                <h3>Redirecting to dashboard. Click here to <a href={% url 'dashboard' %}>force redirect</a>.</h3>
+                <h3>Session expired. Redirecting to Login. Click here to <a href={% url 'login' %}>force redirect</a>.
+                </h3>
             </div>
         </div>
     </div>

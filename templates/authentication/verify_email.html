@@ -5,10 +5,18 @@
     <meta http-equiv="refresh"
           content="3; url = {% url 'login' %}"/>
 
-    {% if status == 1 %}
-        <h3>Email verified. Redirecting to <a href="{% url 'login' %}">login</a></h3>
-    {% elif status == 2 %}
-        <h3>Invalid request. Redirecting to <a href="{% url 'login' %}">login</a></h3>
-    {% endif %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-8 mx-auto">
+
+                {% if status == 1 %}
+                    <h3>Email verified. Redirecting to <a href="{% url 'login' %}">login</a></h3>
+                {% elif status == 2 %}
+                    <h3>Invalid request. Redirecting to <a href="{% url 'login' %}">login</a></h3>
+                {% endif %}
+
+            </div>
+        </div>
+    </div>
 
 {% endblock %}
