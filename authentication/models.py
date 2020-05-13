@@ -22,7 +22,7 @@ class UserProfile(models.Model):
     password = models.CharField(max_length=500, blank=False)
     myGIISID = models.CharField(max_length=50, blank=True)
     phone = models.CharField(max_length=50, blank=True)
-    profilePicture = models.ImageField(default='defaultProfilePicture.jpg')
+    profilePicture = models.ImageField(default='defaultProfilePicture.jpg', upload_to='profile_pictures')
     isEmailVerified = models.BooleanField(default=False)
     timestamp = models.DateTimeField(auto_now_add=True)
     role_choices = (
@@ -45,14 +45,14 @@ class UserProfile(models.Model):
 
     def send_verification_email(self, host, scheme):
         message = f"Hello,\n\nFollow this link to verify your email " \
-                  f"address.\n\nhttps://myhostelgiis.herokuapp.com/authentication/verify_email/?uid={self.uid}\n\nIf " \
-                  f"you didn’t ask to verify this address, you can ignore this EMAIL.\n\nThanks,\n\nYour myHostel team "
+                  f"address.\n\n{scheme}://{host}/authentication/verify_email/?uid={self.uid}\n\nIf " \
+                  f"you didn’t ask to verify this address, you can ignore this email.\n\nThanks,\n\nYour myHostel team "
         send_mail(subject="Verify your email for myHostel", message=message, recipient_list=[self.email],
                   from_email="myhostelgiis@gmail.com")
 
     def send_forgot_password_email(self, host, scheme):
         message = f"Hello,\n\nFollow this link to reset your password " \
-                  f"address.\n\nhttps://myhostelgiis.herokuapp.com/authentication/reset_password/?uid={self.uid}\n" \
+                  f"address.\n\n{scheme}://{host}/authentication/reset_password/?uid={self.uid}\n" \
                   f"\nIf you didn’t ask to reset your password, you can ignore this email.\n\nThanks,\n\nYour " \
                   f"myHostel team "
         send_mail(subject="Reset your password for myHostel", message=message, recipient_list=[self.email],

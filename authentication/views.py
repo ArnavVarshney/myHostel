@@ -8,8 +8,9 @@ def register(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST, request.FILES)
         if form.is_valid():
-            UserProfile.objects.create(**form.cleaned_data)
-            UserProfile.objects.get(**form.cleaned_data).send_verification_email(request.scheme, request.get_host())
+            UserProfile.objects.create(**form.cleaned_data).save()
+            UserProfile.objects.get(email=form.cleaned_data['email']).send_verification_email(request.get_host(),
+                                                                                              request.scheme)
             return render(request, 'authentication/register.html', {'form': form, 'status': 1,
                                                                     'msg': 'Registered successfully! A verification '
                                                                            'email has been sent to the registered '
@@ -38,7 +39,7 @@ def forgot_password(request):
         form = ForgotPasswordForm(request.POST)
         if form.is_valid():
             email = form.cleaned_data['email']
-            UserProfile.objects.get(email=email).send_forgot_password_email(request.scheme, request.get_host())
+            UserProfile.objects.get(email=email).send_forgot_password_email( request.get_host(), request.scheme)
             return render(request, 'authentication/forgot_password.html',
                           {'form': form, 'status': 1, 'msg': 'Mail sent successfully!'})
         return render(request, 'authentication/forgot_password.html', {'form': form})
