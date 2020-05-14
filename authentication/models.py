@@ -22,7 +22,8 @@ class UserProfile(models.Model):
     password = models.CharField(max_length=500, blank=False)
     my_giis_id = models.CharField(max_length=50, blank=True)
     phone = models.CharField(max_length=50, blank=True)
-    profile_picture = models.ImageField(default='defaultprofile_picture.jpg', upload_to='profile_pictures', blank=True)
+    profile_picture = models.ImageField(default='profile_pictures/default_profile_picture.png',
+                                        upload_to='profile_pictures', blank=True)
     isEmailVerified = models.BooleanField(default=False)
     timestamp = models.DateTimeField(auto_now_add=True)
     role_choices = (

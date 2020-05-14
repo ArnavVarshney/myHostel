@@ -28,14 +28,18 @@ def profile(request):
     user_validation_dict = user_validation(request)
     user_role = user_validation_dict.get('user_role')
     user_uid = user_validation_dict['user_uid']
+    params = {}
     if request.method == 'POST':
         form = ProfileForm(request.POST, request.FILES)
         if form.is_valid():
             UserProfile.objects.filter(uid=user_uid).update(**form.cleaned_data)
+            params['status'] = 1
+            params['msg'] = 'Profile updated'
     user_profile_object = UserProfile.objects.get(uid=user_uid)
     data = {'first_name': user_profile_object.first_name, 'last_name': user_profile_object.last_name,
             'role': user_profile_object.role, 'email': user_profile_object.email,
             'my_giis_id': user_profile_object.my_giis_id, 'phone': user_profile_object.phone,
             'profile_picture': user_profile_object.profile_picture}
     form = ProfileForm(initial=data)
-    return render(request, f'dashboard/{user_role}/profile.html', {'form': form})
+    params['form'] = form
+    return render(request, f'dashboard/{user_role}/profile.html', params)
