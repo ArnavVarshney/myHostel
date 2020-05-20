@@ -26,9 +26,15 @@
             class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto"></ul>
-        <a href="{% url 'login' %}">
-            <button class="btn btn-info btn-lg">Login</button>
-        </a>
+        {% if logged_in %}
+            <a href="{% url 'redirect_login' %}">
+                <button class="btn btn-info">Proceed to Dashboard</button>
+            </a>
+        {% else %}
+            <a href="{% url 'login' %}">
+                <button class="btn btn-info">Login</button>
+            </a>
+        {% endif %}
     </div>
 </nav>
 <header>

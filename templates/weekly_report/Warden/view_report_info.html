@@ -1,0 +1,36 @@
+{% extends 'weekly_report/Warden/base_layout.html' %}
+
+{% load bootstrap4 %}
+
+{% block content %}
+    <div class="container">
+        <h5>Report Date: {{ weekly_report_object.date }}</h5>
+        <h5>Created On: {{ weekly_report_object.timestamp }}</h5>
+        <div class="table-responsive">
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">User</th>
+                    <th scope="col">Submitted On</th>
+                    <th scope="col">Report</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% if report_objects %}
+                    {% for report_object in report_objects %}
+                        <tr>
+                            <td>{{ report_object.creation_user.first_name }} {{ report_object.creation_user.last_name }}</td>
+                            <td>{{ report_object.timestamp }}</td>
+                            <td>{{ report_object.report }}</td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="3" style="text-align: center">No reports submitted!</td>
+                    </tr>
+                {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

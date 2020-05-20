@@ -1,13 +1,14 @@
-from django.shortcuts import render, redirect
+from django.core.exceptions import PermissionDenied
+from django.shortcuts import render
 
-from authentication.models import UserProfile
+from authentication.models import User
 from dashboard.forms import ProfileForm
 
 
 def user_validation(request):
     try:
         id_token = request.COOKIES['user']
-        id_token_role = UserProfile.objects.get(uid=id_token).role
+        id_token_role = User.objects.get(uid=id_token).role
         if id_token_role == 1:
             return {'user_uid': id_token, 'user_role': 'Student'}
         elif id_token_role == 2:
@@ -15,7 +16,7 @@ def user_validation(request):
         elif id_token_role == 3:
             return {'user_uid': id_token, 'user_role': 'School'}
     except KeyError:
-        return redirect('/authentication/login_session/')
+        raise PermissionDenied
 
 
 def dashboard(request):
@@ -32,10 +33,10 @@ def profile(request):
     if request.method == 'POST':
         form = ProfileForm(request.POST, request.FILES)
         if form.is_valid():
-            UserProfile.objects.filter(uid=user_uid).update(**form.cleaned_data)
+            User.objects.filter(uid=user_uid).update(**form.cleaned_data)
             params['status'] = 1
             params['msg'] = 'Profile updated'
-    user_profile_object = UserProfile.objects.get(uid=user_uid)
+    user_profile_object = User.objects.get(uid=user_uid)
     data = {'first_name': user_profile_object.first_name, 'last_name': user_profile_object.last_name,
             'role': user_profile_object.role, 'email': user_profile_object.email,
             'my_giis_id': user_profile_object.my_giis_id, 'phone': user_profile_object.phone,

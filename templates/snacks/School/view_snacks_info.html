@@ -1,0 +1,47 @@
+{% extends 'snacks/School/base_layout.html' %}
+
+{% load bootstrap4 %}
+
+{% block content %}
+    <div class="container">
+        <h5>Snacks Date: {{ snack_object.date }}</h5>
+        <h5>Created On: {{ snack_object.timestamp }}</h5>
+        <div class="table-responsive">
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">User</th>
+                    <th scope="col">Submitted On</th>
+                    <th scope="col">Bill</th>
+                    <th scope="col">Amount</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% if bill_objects %}
+                    {% for bill_object in bill_objects %}
+                        <tr>
+                            <td>{{ bill_object.creation_user.first_name }} {{ bill_object.creation_user.last_name }}</td>
+                            <td>{{ bill_object.timestamp }}</td>
+                            <td style="text-align: center"><a href="{{ bill_object.bill.url }}"
+                                                              class=" btn btn-sm btn-success"
+                                                              target="_blank"> View </a>
+                                <a href="/dashboard/removeSnacksBill/{{ snackId }}/{{ id }}/"
+                                   class=" btn btn-sm btn-danger"> Remove </a>
+                            </td>
+                            <td>{{ bill_object.amount }}</td>
+                        </tr>
+                    {% endfor %}
+                    <tr>
+                        <td colspan="3" style="text-align: right">Total</td>
+                        <td>{{ total_amount }}</td>
+                    </tr>
+                {% else %}
+                    <tr>
+                        <td colspan="4" style="text-align: center">No bills submitted!</td>
+                    </tr>
+                {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

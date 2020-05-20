@@ -4,7 +4,7 @@ import os
 
 from django import forms
 
-from authentication.models import UserProfile
+from authentication.models import User
 
 
 def hash_password(password):
@@ -24,12 +24,12 @@ def verify_password(stored_password, provided_password):
 
 class RegistrationForm(forms.ModelForm):
     class Meta:
-        model = UserProfile
+        model = User
         fields = ['profile_picture', 'first_name', 'last_name', 'email', 'password', 'my_giis_id', 'phone', 'role']
 
     def clean_email(self):
         email = self.cleaned_data.get('email')
-        if UserProfile.objects.filter(email=email).count() != 0:
+        if User.objects.filter(email=email).count() != 0:
             raise forms.ValidationError('User with the given email already exists')
         return email
 
@@ -50,20 +50,22 @@ class RegistrationForm(forms.ModelForm):
 
 class LoginForm(forms.ModelForm):
     class Meta:
-        model = UserProfile
+        model = User
         fields = ['email', 'password']
 
     def clean_email(self):
         email = self.cleaned_data.get('email')
-        if not UserProfile.objects.filter(email=email).exists():
+        if not User.objects.filter(email=email).exists():
+            raise forms.ValidationError('User with the given email does not exist')
+        elif not User.objects.get(email=email).enabled:
             raise forms.ValidationError('User with the given email does not exist')
         return email
 
     def clean_password(self):
         email = self.cleaned_data.get('email')
         password = self.cleaned_data.get('password')
-        if UserProfile.objects.filter(email=email).exists():
-            if not verify_password(UserProfile.objects.get(email=email).password, password):
+        if User.objects.filter(email=email).exists():
+            if not verify_password(User.objects.get(email=email).password, password):
                 raise forms.ValidationError('Invalid email and password combination')
         return password
 
@@ -73,7 +75,7 @@ class LoginForm(forms.ModelForm):
 
 class ResetPasswordForm(forms.ModelForm):
     class Meta:
-        model = UserProfile
+        model = User
         fields = ['password']
 
     password = forms.CharField(label='Password', required=True, widget=forms.PasswordInput)
@@ -81,12 +83,12 @@ class ResetPasswordForm(forms.ModelForm):
 
 class ForgotPasswordForm(forms.ModelForm):
     class Meta:
-        model = UserProfile
+        model = User
         fields = ['email']
 
     def clean_email(self):
         email = self.cleaned_data.get('email')
-        if not UserProfile.objects.filter(email=email).exists():
+        if not User.objects.filter(email=email).exists():
             raise forms.ValidationError('User with the given email does not exist')
         return email
 

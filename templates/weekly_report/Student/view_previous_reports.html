@@ -1,0 +1,60 @@
+{% extends 'weekly_report/Student/base_layout.html' %}
+
+{% load bootstrap4 %}
+
+{% block content %}
+    <div class="container">
+        <div class="table-responsive">
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Time</th>
+                    <th scope="col">Request Name</th>
+                    <th scope="col">Request Message</th>
+                    <th scope="col" colspan="2">Status</th>
+                    <th scope="col">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% if all_objects %}
+                    {% for object in all_objects %}
+                        <tr>
+                            {% if object.status_school == 'Pending' or object.status_warden == 'Pending' %}
+                                <td class=table-warning>{{ object.timestamp }} </td>
+                                <td class=table-warning>{{ object.request_name }} </td>
+                                <td class=table-warning
+                                    style="word-break: break-all;">{{ object.request_message }} </td>
+                                <td class=table-warning>{{ object.status_warden }}</td>
+                                <td class=table-warning>{{ object.status_school }}</td>
+                                <td class=table-warning style="text-align: center"><a
+                                        href="{% url 'withdraw_request' %}?uid={{ object.uid }}" class=" btn btn-sm
+                                        btn-danger"> Withdraw </a></td>
+                            {% elif object.status_school == 'Rejected' or object.status_warden == 'Rejected' %}
+                                <td class=table-danger>{{ object.timestamp }} </td>
+                                <td class=table-danger>{{ object.request_name }} </td>
+                                <td class=table-danger
+                                    style="word-break: break-all;">{{ object.request_message }} </td>
+                                <td class=table-danger>{{ object.status_warden }}</td>
+                                <td class=table-danger>{{ object.status_school }}</td>
+                                <td class=table-danger style="text-align: center">NA</td>
+                            {% elif object.status_school == 'Approved' or object.status_warden == 'Approved' %}
+                                <td class=table-success>{{ object.timestamp }} </td>
+                                <td class=table-success>{{ object.request_name }} </td>
+                                <td class=table-success
+                                    style="word-break: break-all;">{{ object.request_message }} </td>
+                                <td class=table-success>{{ object.status_warden }}</td>
+                                <td class=table-success>{{ object.status_school }}</td>
+                                <td class=table-success style="text-align: center">NA</td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="6" style="text-align: center">No requests found!</td>
+                    </tr>
+                {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

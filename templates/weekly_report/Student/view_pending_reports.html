@@ -1,0 +1,36 @@
+{% extends 'weekly_report/Student/base_layout.html' %}
+
+{% load bootstrap4 %}
+
+{% block content %}
+    <div class="container">
+        <div class="table-responsive">
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Date</th>
+                    <th scope="col">Status</th>
+                    <th scope="col">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% if pending_reports_objects %}
+                    {% for object in pending_reports_objects %}
+                        <tr>
+                            <td class=table-warning>{{ object.timestamp }} </td>
+                            <td class=table-warning>Pending</td>
+                            <td class=table-warning style="text-align: center"><a
+                                    href="{% url 'fill_report' %}?uid={{ object.uid }}"
+                                    class=" btn btn-sm btn-success"> Fill </a></td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="3" style="text-align: center">No pending reports found!</td>
+                    </tr>
+                {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'snacks/School/base_layout.html' %}
+
+{% load bootstrap4 %}
+
+{% block content %}
+    <div class="container">
+        <div class="table-responsive">
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Time</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% if all_objects %}
+                    {% for object in all_objects %}
+                        <tr>
+                            <td>{{ object.timestamp }} </td>
+                            <td>{{ object.date }}</td>
+                            <td style="text-align: center"><a href="{% url 'view_snacks_info' %}?uid={{ object.uid }}"
+                                                              class=" btn btn-sm btn-success"> View </a></td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="3" style="text-align: center">No entries found!</td>
+                    </tr>
+                {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

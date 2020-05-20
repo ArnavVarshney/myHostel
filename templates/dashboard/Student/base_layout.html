@@ -18,13 +18,19 @@
             class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item"><a class="nav-link" href="{% url 'dashboard' %}">Dashboard</a></li>
-            <li class="nav-item"><a class="nav-link" href="{% url 'profile' %}">Profile</a></li>
+            <li class="nav-item dropdown active">
+                <a class="nav-link dropdown-toggle" href="#" id="dashboardDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false"> Dashboard </a>
+                <div class="dropdown-menu" aria-labelledby="dashboardDropdown">
+                    <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                    <div class="dropdown-divider"></div>
+                </div>
+            </li>
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="snackDropdown" role="button" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false"> Snacks </a>
                 <div class="dropdown-menu" aria-labelledby="snackDropdown">
-                    <a class="dropdown-item" href="/dashboard/uploadSnacksBills">Upload Bills</a>
+                    <a class="dropdown-item" href="{% url 'view_pending_snacks' %}">View pending snacks</a>
                     <div class="dropdown-divider"></div>
                 </div>
             </li>
@@ -32,8 +38,8 @@
                 <a class="nav-link dropdown-toggle" href="#" id="permissionDropdown" role="button"
                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Permissions </a>
                 <div class="dropdown-menu" aria-labelledby="permissionDropdown">
-                    <a class="dropdown-item" href="/dashboard/requestPermission">New request</a>
-                    <a class="dropdown-item" href="/dashboard/viewRequests">View previous requests</a>
+                    <a class="dropdown-item" href="{% url 'new_request' %}">New request</a>
+                    <a class="dropdown-item" href="{% url 'view_previous_requests' %}">View previous requests</a>
                     <div class="dropdown-divider"></div>
                 </div>
             </li>
@@ -41,7 +47,8 @@
                 <a class="nav-link dropdown-toggle" href="#" id="weeklyReportDropdown" role="button"
                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Weekly Report </a>
                 <div class="dropdown-menu" aria-labelledby="weeklyReportDropdown">
-                    <a class="dropdown-item" href="/dashboard/fillReport">Fill report</a>
+                    <a class="dropdown-item" href="{% url 'view_pending_reports' %}">View pending reports</a>
+                    <a class="dropdown-item" href="{% url 'view_previous_reports' %}">View previous reports</a>
                     <div class="dropdown-divider"></div>
                 </div>
             </li>

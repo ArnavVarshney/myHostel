@@ -4,7 +4,6 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
         ('authentication', '0007_auto_20200514_0943'),
     ]
@@ -13,6 +12,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='userprofile',
             name='profile_picture',
-            field=models.ImageField(blank=True, default='profile_pictures/default_profile_picture.png', upload_to='profile_pictures'),
+            field=models.ImageField(blank=True, default='profile_pictures/default_profile_picture.png',
+                                    upload_to='profile_pictures'),
         ),
     ]

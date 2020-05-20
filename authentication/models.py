@@ -14,14 +14,14 @@ def hash_password(password):
     return (salt + pwd_hash).decode('ascii')
 
 
-class UserProfile(models.Model):
+class User(models.Model):
     uid = models.UUIDField(primary_key=True, default=uuid.uuid4)
     first_name = models.CharField(max_length=50, blank=True)
     last_name = models.CharField(max_length=50, blank=True)
     email = models.EmailField(max_length=50, blank=False)
     password = models.CharField(max_length=500, blank=False)
     my_giis_id = models.CharField(max_length=50, blank=True)
-    phone = models.CharField(max_length=50, blank=True)
+    phone = models.CharField(max_length=8, blank=True)
     profile_picture = models.ImageField(default='profile_pictures/default_profile_picture.png',
                                         upload_to='profile_pictures', blank=True)
     isEmailVerified = models.BooleanField(default=False)
@@ -32,6 +32,7 @@ class UserProfile(models.Model):
         (3, 'School'),
     )
     role = models.PositiveSmallIntegerField(choices=role_choices, null=True)
+    enabled = models.BooleanField(default=True)
 
     def __str__(self):
         return f'{self.first_name} {self.last_name} - {self.email}'

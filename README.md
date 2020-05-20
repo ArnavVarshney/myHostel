@@ -1,3 +1,3 @@
 # myHostel
 
-Coded in Python (Django +  Firebase)
+Coded in Python (Django)

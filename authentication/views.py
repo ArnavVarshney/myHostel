@@ -1,16 +1,16 @@
 from django.shortcuts import render, redirect
 
 from authentication.forms import RegistrationForm, LoginForm, ResetPasswordForm, ForgotPasswordForm
-from authentication.models import UserProfile
+from authentication.models import User
 
 
 def register(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST, request.FILES)
         if form.is_valid():
-            UserProfile.objects.create(**form.cleaned_data).save()
-            UserProfile.objects.get(email=form.cleaned_data['email']).send_verification_email(request.get_host(),
-                                                                                              request.scheme)
+            User.objects.create(**form.cleaned_data).save()
+            User.objects.get(email=form.cleaned_data['email']).send_verification_email(request.get_host(),
+                                                                                       request.scheme)
             return render(request, 'authentication/register.html', {'form': form, 'status': 1,
                                                                     'msg': 'Registered successfully! A verification '
                                                                            'email has been sent to the registered '
@@ -25,7 +25,7 @@ def login(request):
         form = LoginForm(request.POST)
         if form.is_valid():
             email = form.cleaned_data.get('email')
-            uid = UserProfile.objects.get(email=email).uid
+            uid = User.objects.get(email=email).uid
             response = render(request, 'authentication/redirect_login.html')
             response.set_cookie('user', uid)
             return response
@@ -39,7 +39,7 @@ def forgot_password(request):
         form = ForgotPasswordForm(request.POST)
         if form.is_valid():
             email = form.cleaned_data['email']
-            UserProfile.objects.get(email=email).send_forgot_password_email(request.get_host(), request.scheme)
+            User.objects.get(email=email).send_forgot_password_email(request.get_host(), request.scheme)
             return render(request, 'authentication/forgot_password.html',
                           {'form': form, 'status': 1, 'msg': 'Mail sent successfully!'})
         return render(request, 'authentication/forgot_password.html', {'form': form})
@@ -51,12 +51,11 @@ def verify_email(request):
     if request.method == 'GET':
         uid = request.GET.get('uid')
         try:
-            if UserProfile.objects.filter(uid=uid).exists():
-                UserProfile.objects.get(uid=uid).verify_email()
-                return render(request, 'authentication/verify_email.html', {'status': 1})
+            if User.objects.filter(uid=uid).exists():
+                User.objects.get(uid=uid).verify_email()
+                return render(request, 'authentication/verify_email.html')
         except:
-            return render(request, 'authentication/verify_email.html', {'status': 2})
-    return render(request, 'authentication/verify_email.html', {'status': 2})
+            pass
 
 
 def reset_password(request):
@@ -66,20 +65,18 @@ def reset_password(request):
             uid = request.POST.get('uid')
             password = form.cleaned_data['password']
             try:
-                UserProfile.objects.get(uid=uid).reset_password(password)
+                User.objects.get(uid=uid).reset_password(password)
             except:
-                return render(request, 'authentication/reset_password.html',
-                              {'form': form, 'status': 2, 'msg': 'Invalid request'})
+                pass
             return redirect('login')
         return render(request, 'authentication/reset_password.html', {'form': form})
     else:
         uid = request.GET.get('uid')
         try:
-            email = UserProfile.objects.get(uid=uid).email
+            email = User.objects.get(uid=uid).email
+            return render(request, 'authentication/reset_password.html', {'form': ResetPasswordForm(), 'email': email})
         except:
-            return render(request, 'authentication/reset_password.html',
-                          {'form': ResetPasswordForm(), 'status': 2, 'msg': 'Invalid request'})
-        return render(request, 'authentication/reset_password.html', {'form': ResetPasswordForm(), 'email': email})
+            pass
 
 
 def logout(request):
@@ -90,7 +87,3 @@ def logout(request):
 
 def redirect_login(request):
     return render(request, 'authentication/redirect_login.html')
-
-
-def login_session(request):
-    return render(request, 'authentication/redirect_login_session.html', )

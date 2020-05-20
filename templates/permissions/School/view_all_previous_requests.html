@@ -1,0 +1,107 @@
+{% extends 'permissions/School/base_layout.html' %}
+
+{% load bootstrap4 %}
+
+{% block content %}
+    <div class="container">
+        <div class="table-responsive">
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Time</th>
+                    <th scope="col">User</th>
+                    <th scope="col">Request Name</th>
+                    <th scope="col">Request Message</th>
+                    <th scope="col" colspan="2">Status</th>
+                    <th scope="col">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% if all_objects %}
+                    {% for object in all_objects %}
+                        {% if role == 'School' %}
+                            {% with object_status=object.status_school %}
+                                <tr>
+                                    {% if object_status == 'Pending' %}
+                                        <td class=table-warning>{{ object.timestamp }} </td>
+                                        <td class=table-warning>{{ object.creation_user.first_name }} {{ object.creation_user.last_name }}</td>
+                                        <td class=table-warning>{{ object.request_name }} </td>
+                                        <td class=table-warning
+                                            style="word-break: break-all;">{{ object.request_message }} </td>
+                                        <td class=table-warning>{{ object.status_warden }}</td>
+                                        <td class=table-warning>{{ object.status_school }}</td>
+                                        <td class=table-warning style="text-align: center">NA</td>
+                                    {% elif object_status == 'Rejected' %}
+                                        <td class=table-danger>{{ object.timestamp }} </td>
+                                        <td class=table-danger>{{ object.creation_user_name }}</td>
+                                        <td class=table-danger>{{ object.request_name }} </td>
+                                        <td class=table-danger
+                                            style="word-break: break-all;">{{ object.request_message }} </td>
+                                        <td class=table-danger>{{ object.status_warden }}</td>
+                                        <td class=table-danger>{{ object.status_school }}</td>
+                                        <td class=table-danger style="text-align: center"><a
+                                                href="{% url 'edit_request' %}?uid={{ object.uid }}" class=" btn btn-sm
+                                        btn-danger"> Edit </a></td>
+                                    {% elif object_status == 'Approved' %}
+                                        <td class=table-success>{{ object.timestamp }} </td>
+                                        <td class=table-success>{{ object.creation_user_name }}</td>
+                                        <td class=table-success>{{ object.request_name }} </td>
+                                        <td class=table-success
+                                            style="word-break: break-all;">{{ object.request_message }} </td>
+                                        <td class=table-success>{{ object.status_warden }}</td>
+                                        <td class=table-success>{{ object.status_school }}</td>
+                                        <td class=table-success style="text-align: center"><a
+                                                href="{% url 'edit_request' %}?uid={{ object.uid }}" class=" btn btn-sm
+                                        btn-danger"> Edit </a></td>
+                                    {% endif %}
+                                </tr>
+                            {% endwith %}
+                        {% else %}
+                            {% with object_status=object.status_warden %}
+                                <tr>
+                                    {% if object_status == 'Pending' %}
+                                        <td class=table-warning>{{ object.timestamp }} </td>
+                                        <td class=table-warning>{{ object.creation_user_name }}</td>
+                                        <td class=table-warning>{{ object.request_name }} </td>
+                                        <td class=table-warning
+                                            style="word-break: break-all;">{{ object.request_message }} </td>
+                                        <td class=table-warning>{{ object.status_warden }}</td>
+                                        <td class=table-warning>{{ object.status_school }}</td>
+                                        <td class=table-warning style="text-align: center">NA</td>
+                                    {% elif object_status == 'Rejected' %}
+                                        <td class=table-danger>{{ object.timestamp }} </td>
+                                        <td class=table-warning>{{ object.creation_user_name }}</td>
+                                        <td class=table-danger>{{ object.request_name }} </td>
+                                        <td class=table-danger
+                                            style="word-break: break-all;">{{ object.request_message }} </td>
+                                        <td class=table-danger>{{ object.status_warden }}</td>
+                                        <td class=table-danger>{{ object.status_school }}</td>
+                                        <td class=table-danger style="text-align: center"><a
+                                                href="{% url 'edit_request' %}?uid={{ object.uid }}" class=" btn btn-sm
+                                        btn-danger"> Edit </a></td>
+                                    {% elif object_status == 'Approved' %}
+                                        <td class=table-success>{{ object.timestamp }} </td>
+                                        <td class=table-warning>{{ object.creation_user_name }}</td>
+                                        <td class=table-success>{{ object.request_name }} </td>
+                                        <td class=table-success
+                                            style="word-break: break-all;">{{ object.request_message }} </td>
+                                        <td class=table-success>{{ object.status_warden }}</td>
+                                        <td class=table-success>{{ object.status_school }}</td>
+                                        <td class=table-success style="text-align: center"><a
+                                                href="{% url 'edit_request' %}?uid={{ object.uid }}" class=" btn btn-sm
+                                        btn-danger"> Edit </a></td>
+                                    {% endif %}
+                                </tr>
+                            {% endwith %}
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    <tr>
+                        <td colspan="7" style="text-align: center">No requests found!</td>
+                    </tr>
+                {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

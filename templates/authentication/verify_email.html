@@ -8,13 +8,7 @@
     <div class="container">
         <div class="row">
             <div class="col-12 col-md-8 mx-auto">
-
-                {% if status == 1 %}
-                    <h3>Email verified. Redirecting to <a href="{% url 'login' %}">login</a></h3>
-                {% elif status == 2 %}
-                    <h3>Invalid request. Redirecting to <a href="{% url 'login' %}">login</a></h3>
-                {% endif %}
-
+                <h3>Email verified. Redirecting to <a href="{% url 'login' %}">login</a></h3>
             </div>
         </div>
     </div>

@@ -1,0 +1,39 @@
+{% extends 'snacks/Warden/base_layout.html' %}
+
+{% load bootstrap4 %}
+
+{% block content %}
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-md-8 mx-auto">
+                <div class="jumbotron">
+                    <div class="row text">
+                        <div class="text-center col-12">
+                            <h2>Create Snacks</h2>
+                        </div>
+                        <div class="col-12">
+                            <form id="createSnacksForm" class="text" action="{% url 'create_snacks' %}" method="post">
+                                {% csrf_token %}
+                                {% bootstrap_form form %}
+                                {% if status %}
+                                    <div class="form-group text-left">
+                                        {% if status == 2 %}
+                                            <label class="text-danger">{{ msg }}</label>
+                                        {% elif status == 1 %}
+                                            <label class="text-success">{{ msg }}</label>
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
+                                <div class="text-center col-12">
+                                    {% buttons %}
+                                        <button type="submit" class="btn btn-primary">Create</button>
+                                    {% endbuttons %}
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

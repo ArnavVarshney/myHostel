@@ -1,11 +1,11 @@
 from django import forms
 
-from authentication.models import UserProfile
+from authentication.models import User
 
 
 class ProfileForm(forms.ModelForm):
     class Meta:
-        model = UserProfile
+        model = User
         fields = ['profile_picture', 'first_name', 'last_name', 'email', 'my_giis_id', 'phone', 'role']
 
     profile_picture = forms.ImageField(label='Profile Picture', required=False)
@@ -25,5 +25,5 @@ class ProfileForm(forms.ModelForm):
         if not profile_picture and profile_picture_clear == 'on':
             return ''
         elif profile_picture is None:
-            return UserProfile.objects.get(email=email).profile_picture
+            return User.objects.get(email=email).profile_picture
         return profile_picture
