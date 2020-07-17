@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\varsh\PycharmProjects\myHostel\venv"
+VIRTUAL_ENV="C:\Users\varsh\Desktop\CS Programming\myHostel\venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

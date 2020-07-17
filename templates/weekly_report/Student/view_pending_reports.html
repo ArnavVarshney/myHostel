@@ -17,7 +17,7 @@
                 {% if pending_reports_objects %}
                     {% for object in pending_reports_objects %}
                         <tr>
-                            <td class=table-warning>{{ object.timestamp }} </td>
+                            <td class=table-warning>{{ object.date }} </td>
                             <td class=table-warning>Pending</td>
                             <td class=table-warning style="text-align: center"><a
                                     href="{% url 'fill_report' %}?uid={{ object.uid }}"

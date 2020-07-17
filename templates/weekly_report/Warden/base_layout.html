@@ -50,8 +50,9 @@
                 <a class="nav-link dropdown-toggle" href="#" id="weeklyReportDropdown" role="button"
                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Weekly Report </a>
                 <div class="dropdown-menu" aria-labelledby="weeklyReportDropdown">
-                    <a class="dropdown-item" href="{% url 'view_pending_reports' %}">View pending reports</a>
                     <a class="dropdown-item" href="{% url 'create_report' %}">Create new entry</a>
+                    <a class="dropdown-item" href="{% url 'view_pending_reports' %}">View pending reports</a>
+                    <a class="dropdown-item" href="{% url 'view_previous_reports' %}">View previous reports</a>
                     <a class="dropdown-item" href="{% url 'view_all_previous_reports' %}">View all previous reports</a>
                     <div class="dropdown-divider"></div>
                 </div>

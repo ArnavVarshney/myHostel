@@ -14,6 +14,9 @@
                         <div class="col-12">
                             <form id="fillReportForm" class="text" action="{% url 'fill_report' %}" method="post">
                                 {% csrf_token %}
+                                <div style="text-align: center">
+                                    <label>Report for {{ object.date }}</label>
+                                </div>
                                 <input type="hidden" name="weekly_report_uid" value="{{ weekly_report_uid }}">
                                 {% bootstrap_form form %}
                                 {% if status %}

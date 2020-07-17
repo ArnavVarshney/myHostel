@@ -44,7 +44,7 @@ def view_all_previous_snacks(request):
     if all_objects:
         return render(request, f'snacks/{user_role}/view_all_previous_snacks.html',
                       {'all_objects': all_objects})
-    return render(request, f'permissions/{user_role}/view_all_previous_snacks.html')
+    return render(request, f'snacks/{user_role}/view_all_previous_snacks.html')
 
 
 def create_snacks(request):
@@ -72,7 +72,7 @@ def upload_bills(request):
         form = BillUploadForm(request.POST, request.FILES)
         if form.is_valid():
             snack_uid = request.POST.get('snack_uid')
-            form.clean_bill(snack_uid)
+            # form.clean_bill(snack_uid)
             instance = form.save(commit=False)
             instance.creation_user = User.objects.get(uid=user_uid)
             instance.snack_uid = Snack.objects.get(uid=snack_uid)

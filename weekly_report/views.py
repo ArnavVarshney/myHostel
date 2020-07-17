@@ -119,6 +119,7 @@ def view_previous_reports(request):
     if len(submitted_reports) != 0:
         return render(request, f'weekly_report/{user_role}/view_previous_reports.html',
                       {'all_objects': submitted_reports})
+    return render(request, f'weekly_report/{user_role}/view_previous_reports.html')
 
 
 def view_pending_reports(request):
