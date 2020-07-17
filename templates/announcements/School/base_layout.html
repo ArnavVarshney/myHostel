@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="shortcut icon" href="{% static 'favicon.ico' %}" type="image/x-icon"/>
-    <title>myHostel - Snacks</title>
+    <title>myHostel - Dashboard</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 </head>
@@ -27,11 +27,10 @@
                     <div class="dropdown-divider"></div>
                 </div>
             </li>
-            <li class="nav-item dropdown active">
+            <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="snackDropdown" role="button" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false"> Snacks </a>
                 <div class="dropdown-menu" aria-labelledby="snackDropdown">
-                    <a class="dropdown-item" href="{% url 'create_snacks' %}">Create snacks</a>
                     <a class="dropdown-item" href="{% url 'view_all_previous_snacks' %}">View all previous snacks</a>
                     <div class="dropdown-divider"></div>
                 </div>
@@ -50,13 +49,11 @@
                 <a class="nav-link dropdown-toggle" href="#" id="weeklyReportDropdown" role="button"
                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Weekly Report </a>
                 <div class="dropdown-menu" aria-labelledby="weeklyReportDropdown">
-                    <a class="dropdown-item" href="{% url 'view_pending_reports' %}">View pending reports</a>
-                    <a class="dropdown-item" href="{% url 'create_report' %}">Create new entry</a>
-                    <a class="dropdown-item" href="{% url 'view_all_previous_reports' %}">View all previous reports</a>
+                    <a class="dropdown-item" href="{% url 'view_all_previous_reports' %}">View previous entries</a>
                     <div class="dropdown-divider"></div>
                 </div>
             </li>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown active">
                 <a class="nav-link dropdown-toggle" href="#" id="weeklyReportDropdown" role="button"
                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Announcements </a>
                 <div class="dropdown-menu" aria-labelledby="weeklyReportDropdown">

@@ -24,7 +24,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="98bd33c7-2225-4e56-9572-0f96b06a1357" name="Default Changelist" comment="Initial commit">
+      <change afterPath="$PROJECT_DIR$/announcements/forms.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/announcements/migrations/0001_initial.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/announcements/urls.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/announcements/School/base_layout.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/announcements/School/create_announcement.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/announcements/Warden/base_layout.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/announcements/Warden/create_announcement.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/ccc5593a-d439-4a31-b970-3bbe5e24c208.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/ccc5593a-d439-4a31-b970-3bbe5e24c208.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/announcements/models.py" beforeDir="false" afterPath="$PROJECT_DIR$/announcements/models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/announcements/views.py" beforeDir="false" afterPath="$PROJECT_DIR$/announcements/views.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db.sqlite3" beforeDir="false" afterPath="$PROJECT_DIR$/db.sqlite3" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myHostel/settings.py" beforeDir="false" afterPath="$PROJECT_DIR$/myHostel/settings.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/myHostel/urls.py" beforeDir="false" afterPath="$PROJECT_DIR$/myHostel/urls.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/dashboard/School/base_layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/dashboard/School/base_layout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/dashboard/Warden/base_layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/dashboard/Warden/base_layout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/permissions/School/base_layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/permissions/School/base_layout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/permissions/Warden/base_layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/permissions/Warden/base_layout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/snacks/School/base_layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/snacks/School/base_layout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/snacks/Warden/base_layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/snacks/Warden/base_layout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/weekly_report/School/base_layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/weekly_report/School/base_layout.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/weekly_report/Warden/base_layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/weekly_report/Warden/base_layout.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +86,7 @@
     <property name="TERMINAL_CUSTOM_COMMANDS_GOT_IT" value="true" />
     <property name="TODO_SCOPE" value="All Places" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/templates/announcements/School" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -77,18 +98,19 @@
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\varsh\Desktop\CS Programming\myHostel\templates\announcements\School" />
+      <recent name="C:\Users\varsh\Desktop\CS Programming\myHostel\templates\announcements" />
+      <recent name="C:\Users\varsh\PycharmProjects\myHostel\templates\weekly_report\Warden" />
+      <recent name="C:\Users\varsh\PycharmProjects\myHostel\templates\snacks\Warden" />
+      <recent name="C:\Users\varsh\PycharmProjects\myHostel\templates\permissions\Warden" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\varsh\Desktop\CS Programming\myHostel\templates\announcements\Warden" />
       <recent name="C:\Users\varsh\PycharmProjects\myHostel\templates\snacks\School" />
       <recent name="C:\Users\varsh\PycharmProjects\myHostel\templates\dashboard\Student" />
       <recent name="C:\Users\varsh\PycharmProjects\myHostel\templates\authentication" />
       <recent name="C:\Users\varsh\PycharmProjects\myHostel\templates" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\varsh\PycharmProjects\myHostel\templates\weekly_report\Warden" />
-      <recent name="C:\Users\varsh\PycharmProjects\myHostel\templates\snacks\Warden" />
-      <recent name="C:\Users\varsh\PycharmProjects\myHostel\templates\permissions\Warden" />
-      <recent name="C:\Users\varsh\PycharmProjects\myHostel\templates\weekly_report\Student" />
-      <recent name="C:\Users\varsh\PycharmProjects\myHostel\templates\snacks\Student" />
     </key>
   </component>
   <component name="RunManager">
@@ -153,7 +175,7 @@
       <workItem from="1591448224722" duration="1201000" />
       <workItem from="1594875026361" duration="1250000" />
       <workItem from="1594893672448" duration="3818000" />
-      <workItem from="1594953907182" duration="2796000" />
+      <workItem from="1594953907182" duration="5826000" />
     </task>
     <servers />
   </component>
@@ -208,22 +230,22 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="561" y="282" key="Github.ShareDialog/0.0.1366.768@0.0.1366.768" timestamp="1594956055877" />
-    <state width="1323" height="192" key="GridCell.Tab.0.bottom" timestamp="1594954343255">
+    <state width="661" height="192" key="GridCell.Tab.0.bottom" timestamp="1594967477345">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="192" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1594954343255" />
-    <state width="1323" height="192" key="GridCell.Tab.0.center" timestamp="1594954343253">
+    <state width="661" height="192" key="GridCell.Tab.0.bottom/0.0.1366.768@0.0.1366.768" timestamp="1594967477345" />
+    <state width="661" height="192" key="GridCell.Tab.0.center" timestamp="1594967477343">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="192" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1594954343253" />
-    <state width="1323" height="192" key="GridCell.Tab.0.left" timestamp="1594954343250">
+    <state width="661" height="192" key="GridCell.Tab.0.center/0.0.1366.768@0.0.1366.768" timestamp="1594967477343" />
+    <state width="661" height="192" key="GridCell.Tab.0.left" timestamp="1594967477343">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="192" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1594954343250" />
-    <state width="1323" height="192" key="GridCell.Tab.0.right" timestamp="1594954343254">
+    <state width="661" height="192" key="GridCell.Tab.0.left/0.0.1366.768@0.0.1366.768" timestamp="1594967477343" />
+    <state width="661" height="192" key="GridCell.Tab.0.right" timestamp="1594967477345">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state width="1323" height="192" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1594954343253" />
+    <state width="661" height="192" key="GridCell.Tab.0.right/0.0.1366.768@0.0.1366.768" timestamp="1594967477345" />
     <state width="1323" height="238" key="GridCell.Tab.1.bottom" timestamp="1590472491666">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
@@ -268,10 +290,10 @@
       <screen x="0" y="0" width="1366" height="768" />
     </state>
     <state x="413" y="189" key="com.intellij.database.dbimport.ImportUtil.ChooseTargetDialog/0.0.1366.768@0.0.1366.768" timestamp="1594875807919" />
-    <state x="266" y="-7" width="683" height="772" key="find.popup" timestamp="1594896148483">
+    <state x="266" y="-7" width="683" height="772" key="find.popup" timestamp="1594967392971">
       <screen x="0" y="0" width="1366" height="768" />
     </state>
-    <state x="266" y="-7" width="683" height="772" key="find.popup/0.0.1366.768@0.0.1366.768" timestamp="1594896148483" />
+    <state x="266" y="-7" width="683" height="772" key="find.popup/0.0.1366.768@0.0.1366.768" timestamp="1594967392971" />
     <state x="484" y="290" key="git4idea.remote.GitConfigureRemotesDialog" timestamp="1589299276042">
       <screen x="0" y="0" width="1366" height="768" />
     </state>

@@ -7,10 +7,11 @@ from myHostel import views, settings
 urlpatterns = [
     path('', views.index, name='index'),
     path('authentication/', include('authentication.urls')),
+    path('announcements/', include('announcements.urls')),
+    path('weekly_report/', include('weekly_report.urls')),
     path('permissions/', include('permissions.urls')),
     path('dashboard/', include('dashboard.urls')),
     path('snacks/', include('snacks.urls')),
-    path('weekly_report/', include('weekly_report.urls')),
     path('admin/', admin.site.urls),
 ]
 

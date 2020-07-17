@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'authentication',
     'snacks',
     'weekly_report',
-    'permissions'
+    'permissions',
+    'announcements'
 ]
 
 MIDDLEWARE = [
