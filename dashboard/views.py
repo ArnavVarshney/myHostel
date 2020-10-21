@@ -33,7 +33,13 @@ def profile(request):
     if request.method == 'POST':
         form = ProfileForm(request.POST, request.FILES)
         if form.is_valid():
-            User.objects.filter(uid=user_uid).update(**form.cleaned_data)
+            user = User.objects.get(uid=user_uid)
+            user.profile_picture = form.cleaned_data['profile_picture']
+            user.first_name = form.cleaned_data['first_name']
+            user.last_name = form.cleaned_data['last_name']
+            user.my_giis_id = form.cleaned_data['my_giis_id']
+            user.phone = form.cleaned_data['phone']
+            user.save()
             params['status'] = 1
             params['msg'] = 'Profile updated'
     user_profile_object = User.objects.get(uid=user_uid)
