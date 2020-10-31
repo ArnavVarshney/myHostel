@@ -38,7 +38,6 @@ def user_role_validation(request, group, user_validation_dict):
 def add_users(request):
     user_validation_dict = user_validation(request)
     user_role_validation(request, 'Admin', user_validation_dict)
-    user_uid = user_validation_dict['user_uid']
     user_role = user_validation_dict['user_role']
     if request.method == 'POST':
         form = RegistrationForm(request.POST, request.FILES)
