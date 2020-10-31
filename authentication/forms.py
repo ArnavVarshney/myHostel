@@ -58,7 +58,7 @@ class LoginForm(forms.ModelForm):
         if not User.objects.filter(email=email).exists():
             raise forms.ValidationError('User with the given email does not exist')
         elif not User.objects.get(email=email).enabled:
-            raise forms.ValidationError('User with the given email does not exist')
+            raise forms.ValidationError('User has been disabled')
         return email
 
     def clean_password(self):

@@ -1,4 +1,4 @@
-{% extends 'authentication/base_layout.html' %}
+{% extends 'authentication/Warden/base_layout.html' %}
 
 {% load bootstrap4 %}
 
@@ -12,7 +12,7 @@
                             <h2>Register</h2>
                         </div>
                         <div class="col-12">
-                            <form id="registerForm" class="text" action="{% url 'register' %}" method="post"
+                            <form id="registerForm" class="text" action="{% url 'add_users' %}" method="post"
                                   enctype="multipart/form-data">
                                 {% csrf_token %}
                                 {% bootstrap_form form %}

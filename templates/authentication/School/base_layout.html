@@ -18,7 +18,7 @@
             class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item dropdown active">
+            <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="dashboardDropdown" role="button"
                    data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false"> Dashboard </a>
@@ -27,11 +27,12 @@
                     <div class="dropdown-divider"></div>
                 </div>
             </li>
-            <li class="nav-item dropdown">
+            <li class="nav-item dropdown active">
                 <a class="nav-link dropdown-toggle" href="#" id="usersDropdown" role="button" data-toggle="dropdown"
                    aria-haspopup="true" aria-expanded="false"> Users </a>
                 <div class="dropdown-menu" aria-labelledby="snackDropdown">
-                    <a class="dropdown-item" href="{% url 'register' %}">Add&sol;Remove Users</a>
+                    <a class="dropdown-item" href="{% url 'add_users' %}">Add users</a>
+                    <a class="dropdown-item" href="{% url 'view_all_users' %}">View all users</a>
                     <div class="dropdown-divider"></div>
                 </div>
             </li>

@@ -12,7 +12,7 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-sm navbar-light bg-light">
-    <a class="navbar-brand" href="/"><img src="{% static 'GIISLogo.svg' %}" width="125" alt=""/>&nbsp;</a>
+    <a class="navbar-brand" href="/"><img src="{% static 'GIISLogo.svg' %}" width="60" alt=""/>&nbsp;</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span
             class="navbar-toggler-icon"></span></button>
@@ -24,6 +24,15 @@
                    aria-haspopup="true" aria-expanded="false"> Dashboard </a>
                 <div class="dropdown-menu" aria-labelledby="dashboardDropdown">
                     <a class="dropdown-item" href="{% url 'profile' %}">Profile</a>
+                    <div class="dropdown-divider"></div>
+                </div>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="usersDropdown" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false"> Users </a>
+                <div class="dropdown-menu" aria-labelledby="snackDropdown">
+                    <a class="dropdown-item" href="{% url 'add_users' %}">Add users</a>
+                    <a class="dropdown-item" href="{% url 'view_all_users' %}">View all users</a>
                     <div class="dropdown-divider"></div>
                 </div>
             </li>

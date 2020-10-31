@@ -59,3 +59,14 @@ class User(models.Model):
                   f"myHostel team "
         send_mail(subject="Reset your password for myHostel", message=message, recipient_list=[self.email],
                   from_email="myhostelgiis@gmail.com")
+
+    def disable_user(self):
+        self.enabled = 0
+        self.save()
+
+    def enable_user(self):
+        self.enabled = 1
+        self.save()
+
+    def delete_user(self):
+        self.delete()

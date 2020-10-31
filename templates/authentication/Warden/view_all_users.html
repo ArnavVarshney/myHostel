@@ -1,0 +1,58 @@
+{% extends 'authentication/Warden/base_layout.html' %}
+
+{% load bootstrap4 %}
+
+{% block content %}
+    <div class="container">
+        <div class="table-responsive">
+            <table class="table">
+                <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Time</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">myGIIS ID</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Role</th>
+                    <th scope="col">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% if all_objects %}
+                    {% for object in all_objects %}
+                        <tr>
+                            <td>{{ forloop.counter }}</td>
+                            <td>{{ object.timestamp }} </td>
+                            <td>{{ object.first_name }} {{ object.last_name }}</td>
+                            <td>{{ object.email }} </td>
+                            <td>{{ object.my_giis_id }} </td>
+                            <td>{{ object.phone }}</td>
+                            {% if object.role == 1 %}
+                                <td>Student</td>
+                            {% elif object.role == 2 %}
+                                <td>Warden</td>
+                            {% elif object.role == 3 %}
+                                <td>School</td>
+                            {% endif %}
+                            <td style="text-align: center">
+                                {% if object.enabled == 1 %}
+                                    <a href="{% url 'disable_user' %}?uid={{ object.uid }}"
+                                       class=" btn btn-sm btn-warning"> Disable </a>
+                                {% else %}
+                                    <a href="{% url 'enable_user' %}?uid={{ object.uid }}"
+                                       class=" btn btn-sm btn-warning"> Enable </a>
+                                {% endif %}
+                                <a href="{% url 'delete_user' %}?uid={{ object.uid }}"
+                                   class=" btn btn-sm btn-danger"> Delete </a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                {% else %}
+                    <td colspan="8" style="text-align: center">No other accounts!</td>
+                {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
