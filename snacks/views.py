@@ -1,4 +1,5 @@
 from django.core.exceptions import PermissionDenied
+from django.core.mail import send_mail
 from django.shortcuts import render
 
 from authentication.models import User
@@ -57,6 +58,20 @@ def create_snacks(request):
             instance = form.save(commit=False)
             instance.creation_user = User.objects.get(uid=user_validation_dict['user_uid'])
             instance.save()
+            try:
+                if form.data['notify_students']:
+                    all_users = User.objects.filter(role=1)
+                    student_emails = []
+                    for user in all_users:
+                        student_emails.append(user.email)
+                    if student_emails:
+                        message = f"Hello,\n\nA new snacks entry for {instance.date} was created by " \
+                                  f"{instance.creation_user.first_name} " \
+                                  f"{instance.creation_user.last_name}\n\nThanks,\n\nYour myHostel team"
+                        send_mail(subject="New Snacks Entry", message=message, recipient_list=student_emails,
+                                  from_email="myhostelgiis@gmail.com")
+            except:
+                pass
             return render(request, f'snacks/{user_role}/create_snacks.html',
                           {'form': form, 'status': 1, 'msg': 'Snacks entry created successfully'})
         return render(request, f'snacks/{user_role}/create_snacks.html', {'form': form})
