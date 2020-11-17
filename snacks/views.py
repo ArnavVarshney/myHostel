@@ -87,7 +87,6 @@ def upload_bills(request):
         form = BillUploadForm(request.POST, request.FILES)
         if form.is_valid():
             snack_uid = request.POST.get('snack_uid')
-            # form.clean_bill(snack_uid)
             instance = form.save(commit=False)
             instance.creation_user = User.objects.get(uid=user_uid)
             instance.snack_uid = Snack.objects.get(uid=snack_uid)

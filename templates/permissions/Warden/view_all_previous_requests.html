@@ -24,7 +24,7 @@
                                 <tr>
                                     {% if object_status == 'Pending' %}
                                         <td class=table-warning>{{ object.timestamp }} </td>
-                                        <td class=table-warning>{{ object.creation_user_name }}</td>
+                                        <td class=table-warning>{{ object.creation_user }}</td>
                                         <td class=table-warning>{{ object.request_name }} </td>
                                         <td class=table-warning
                                             style="word-break: break-all;">{{ object.request_message }} </td>
@@ -33,7 +33,7 @@
                                         <td class=table-warning style="text-align: center">NA</td>
                                     {% elif object_status == 'Rejected' %}
                                         <td class=table-danger>{{ object.timestamp }} </td>
-                                        <td class=table-danger>{{ object.creation_user_name }}</td>
+                                        <td class=table-danger>{{ object.creation_user }}</td>
                                         <td class=table-danger>{{ object.request_name }} </td>
                                         <td class=table-danger
                                             style="word-break: break-all;">{{ object.request_message }} </td>
@@ -44,7 +44,7 @@
                                         btn-danger"> Edit </a></td>
                                     {% elif object_status == 'Approved' %}
                                         <td class=table-success>{{ object.timestamp }} </td>
-                                        <td class=table-success>{{ object.creation_user_name }}</td>
+                                        <td class=table-success>{{ object.creation_user }}</td>
                                         <td class=table-success>{{ object.request_name }} </td>
                                         <td class=table-success
                                             style="word-break: break-all;">{{ object.request_message }} </td>
@@ -61,7 +61,7 @@
                                 <tr>
                                     {% if object_status == 'Pending' %}
                                         <td class=table-warning>{{ object.timestamp }} </td>
-                                        <td class=table-warning>{{ object.creation_user_name }}</td>
+                                        <td class=table-warning>{{ object.creation_user }}</td>
                                         <td class=table-warning>{{ object.request_name }} </td>
                                         <td class=table-warning
                                             style="word-break: break-all;">{{ object.request_message }} </td>
@@ -70,7 +70,7 @@
                                         <td class=table-warning style="text-align: center">NA</td>
                                     {% elif object_status == 'Rejected' %}
                                         <td class=table-danger>{{ object.timestamp }} </td>
-                                        <td class=table-warning>{{ object.creation_user_name }}</td>
+                                        <td class=table-danger>{{ object.creation_user }}</td>
                                         <td class=table-danger>{{ object.request_name }} </td>
                                         <td class=table-danger
                                             style="word-break: break-all;">{{ object.request_message }} </td>
@@ -81,7 +81,7 @@
                                         btn-danger"> Edit </a></td>
                                     {% elif object_status == 'Approved' %}
                                         <td class=table-success>{{ object.timestamp }} </td>
-                                        <td class=table-warning>{{ object.creation_user_name }}</td>
+                                        <td class=table-success>{{ object.creation_user }}</td>
                                         <td class=table-success>{{ object.request_name }} </td>
                                         <td class=table-success
                                             style="word-break: break-all;">{{ object.request_message }} </td>

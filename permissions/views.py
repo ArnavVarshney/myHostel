@@ -76,7 +76,7 @@ def approve_request(request):
     user_role_validation(request, 'Admin', user_validation_dict)
     uid = request.GET.get('uid')
     Permission.objects.get(uid=uid).approve_request(role=user_validation_dict['user_role'])
-    return redirect('view_previous_requests')
+    return redirect('review_requests')
 
 
 def reject_request(request):
@@ -84,7 +84,7 @@ def reject_request(request):
     user_role_validation(request, 'Admin', user_validation_dict)
     uid = request.GET.get('uid')
     Permission.objects.get(uid=uid).reject_request(role=user_validation_dict['user_role'])
-    return redirect('view_previous_requests')
+    return redirect('review_requests')
 
 
 def edit_request(request):
