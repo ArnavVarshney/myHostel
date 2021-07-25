@@ -1,6 +1,6 @@
 from django.core.exceptions import PermissionDenied
 from django.core.mail import send_mail
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from authentication.models import User
 from snacks.forms import SnacksForm, BillUploadForm
@@ -128,3 +128,12 @@ def view_pending_snacks(request):
     if len(pending_snacks) != 0:
         return render(request, 'snacks/Student/view_pending_snacks.html', {'pending_snacks_objects': pending_snacks})
     return render(request, 'snacks/Student/view_pending_snacks.html')
+
+
+def remove_snacks_bill(request):
+    user_validation_dict = user_validation(request)
+    user_role_validation(request, 'Admin', user_validation_dict)
+    uid = request.GET.get('uid')
+    snack_user_uid = request.GET.get('user')
+    Bill.objects.get(snack_uid_id=uid, creation_user_id=snack_user_uid).delete()
+    return redirect('/snacks/view_snacks_info' + '/?uid=' + uid)

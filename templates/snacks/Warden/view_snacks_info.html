@@ -25,7 +25,7 @@
                             <td style="text-align: center"><a href="{{ bill_object.bill.url }}"
                                                               class=" btn btn-sm btn-success"
                                                               target="_blank"> View </a>
-                                <a href="/dashboard/removeSnacksBill/{{ snackId }}/{{ id }}/"
+                                <a href="{% url 'remove_snacks_bill' %}?uid={{ snack_object.uid }}&user={{ bill_object.creation_user.uid }}"
                                    class=" btn btn-sm btn-danger"> Remove </a>
                             </td>
                             <td>{{ bill_object.amount }}</td>

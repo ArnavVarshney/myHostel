@@ -26,7 +26,7 @@ SECRET_KEY = 'am@@6k*ie6-jt2=)ya1gg6&d0val*=3t#840puj-j5u9o+pf49'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1']
 
 # Application definition
 
@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'snacks',
     'weekly_report',
     'permissions',
-    'announcements'
+    'announcements',
+    'django_cleanup'
 ]
 
 MIDDLEWARE = [
@@ -140,3 +141,24 @@ EMAIL_USE_TLS = True
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'myhostelgiis@gmail.com'
 EMAIL_HOST_PASSWORD = '#@567#@890'
+#
+# LOGGING = {
+#     'version': 1,
+#     'disable_existing_loggers': False,
+#     'handlers': {
+#         'console': {
+#             'class': 'logging.StreamHandler',
+#         },
+#        'file': {
+#            'level': 'DEBUG',
+#            'class': 'logging.FileHandler',
+#            'filename': 'log.django',
+#        },
+#     },
+#     'loggers': {
+#         'django': {
+#             'handlers': ['console','file'],
+#             'level': os.getenv('DJANGO_LOG_LEVEL', 'DEBUG'),
+#         },
+#     },
+# }
